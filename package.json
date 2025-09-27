@@ -1,0 +1,12 @@
+{
+  "name": "chartix-auto",
+  "version": "1.0.0",
+  "main": "chartix-auto.js",
+  "type": "module",
+  "scripts": {
+    "start": "node chartix-auto.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}
