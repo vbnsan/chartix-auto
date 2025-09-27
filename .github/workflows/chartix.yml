@@ -1,0 +1,24 @@
+name: Chartix Auto Screenshot
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # روزانه ساعت 6 UTC
+  workflow_dispatch:
+
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - run: npm install
+      - run: npm start
+      - name: Commit charts
+        run: |
+          git config --global user.name "Chartix Bot"
+          git config --global user.email "bot@chartix.local"
+          git add charts
+          git commit -m "Update charts: $(date -u +'%Y-%m-%d %H:%M:%S')"
+          git push
